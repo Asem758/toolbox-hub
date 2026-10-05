@@ -121,10 +121,17 @@ export function YouTubeThumbnailGenerator() {
     showDoodleArrows: false,
     showLaserEyes: false,
     showMoneyStacks: false,
-    showCtrBadge: true,
+    showCtrBadge: false,
     ctrBadgeText: '10X MORE VIEWS!',
+    showStarburstBadge: true,
+    starburstBadgeText: 'COMPLETE ROADMAP',
+    starburstColor: 'gold',
+    starburstSize: 88,
+    starburstAngle: -10,
+    starburstPositionPreset: 'top-left',
+    starburstSpikes: 18,
     textAngle: -4,
-    text3dDepth: 8,
+    text3dDepth: 10,
   });
 
   // Loaded Image & Canvas State
@@ -342,6 +349,10 @@ export function YouTubeThumbnailGenerator() {
       if (config.suggestedPalettes[0] && COLOR_THEMES.some((t) => t.id === config.suggestedPalettes[0])) {
         setSelectedThemeId(config.suggestedPalettes[0]);
       }
+      if (nicheId === 'education') {
+        handleLoadAiRoadmapTemplate();
+        return;
+      }
       if (config.sampleTitles[0]) {
         setVideoTitle(config.sampleTitles[0]);
         // Extract punchy headline
@@ -351,6 +362,48 @@ export function YouTubeThumbnailGenerator() {
       }
       showToast(`Applied ${config.name} preset & layout!`, 'info');
     }
+  };
+
+  // 1-Click Reproduce Reference: Tech & AI Roadmap 3D
+  const handleLoadAiRoadmapTemplate = () => {
+    setLayout('ai-roadmap-masterclass');
+    setSelectedThemeId('tech-roadmap-neon');
+    setFontFamily('titan');
+    setFontSizeMultiplier(1.0);
+    setPunchyHeadline('DATA ANALYTICS');
+    setPunchySubtext('WITH AI');
+    setSupportingBadge('COMPLETE ROADMAP');
+    setVideoTitle('Data Analytics with AI - Complete 2026 Roadmap & Full Course');
+    setOverlayStyle('tech-workstation-neon');
+    setViralConfig({
+      showGrowthArrow: false,
+      showPlayButtonBadge: false,
+      showDoodleArrows: false,
+      showLaserEyes: false,
+      showMoneyStacks: false,
+      showCtrBadge: false,
+      showStarburstBadge: true,
+      starburstBadgeText: 'COMPLETE ROADMAP',
+      starburstColor: 'gold',
+      starburstSize: 88,
+      starburstAngle: -10,
+      starburstPositionPreset: 'top-left',
+      starburstSpikes: 18,
+      showTechPills: true,
+      showDataWave: true,
+      enhancedLighting: true,
+      textAngle: -4,
+      text3dDepth: 12,
+    });
+    setImageAdjustments((prev) => ({
+      ...prev,
+      subjectPosition: 'right',
+      subjectShape: 'rounded-card',
+      glowColor: '#00f0ff',
+      glowBlur: 20,
+      glowWidth: 3,
+    }));
+    showToast('Loaded Reference: Data Analytics With AI 3D Roadmap Template!', 'success');
   };
 
   // Filter layouts
@@ -389,7 +442,7 @@ export function YouTubeThumbnailGenerator() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-black uppercase tracking-wider text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 rounded-full border border-red-200 dark:border-red-800/40">
-                21 Viral Layouts
+                22 Viral Layouts
               </span>
               <span className="text-xs font-bold text-slate-400">1280 × 720 HD Ready</span>
             </div>
@@ -397,7 +450,7 @@ export function YouTubeThumbnailGenerator() {
               YouTube Thumbnail Generator
             </h1>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Create high-CTR, click-attracting YouTube thumbnails with 21 viral layouts, custom image framing, and bold vector typography
+              Create high-CTR, click-attracting YouTube thumbnails with 22 viral layouts, custom image framing, and bold vector typography
             </p>
           </div>
         </div>
@@ -427,7 +480,7 @@ export function YouTubeThumbnailGenerator() {
       {/* Navigation Tabs Bar */}
       <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto">
         {[
-          { id: 'layouts', label: '📐 21 Viral Layouts', desc: 'Eye-Catching Layouts' },
+          { id: 'layouts', label: '📐 22 Viral Layouts', desc: 'Eye-Catching Layouts' },
           { id: 'text-layout', label: '✍️ Headline & Hooks', desc: 'Punchy Typography & 3D' },
           { id: 'image-frame', label: '🖼️ Image Frame & Fit', desc: 'Pan, Zoom & Crop' },
           { id: 'themes', label: '🎨 Color Themes & FX', desc: 'Palettes & Glow' },
@@ -455,7 +508,7 @@ export function YouTubeThumbnailGenerator() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Active Editor Panel (7 Columns) */}
         <div className="lg:col-span-7 space-y-6">
-          {/* TAB 1: 15 EYE-CATCHING LAYOUTS & NICHES */}
+          {/* TAB 1: 22 EYE-CATCHING LAYOUTS & NICHES */}
           {activeTab === 'layouts' && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
               {/* Niche Selection Pills */}
@@ -490,11 +543,11 @@ export function YouTubeThumbnailGenerator() {
                   <div className="flex items-center gap-2">
                     <LayoutGrid className="w-4 h-4 text-red-500" />
                     <label className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white">
-                      Step 2: Choose From 15 Eye-Catching Layouts
+                      Step 2: Choose From 22 Eye-Catching Layouts
                     </label>
                   </div>
                   <span className="text-[10px] font-black text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded-full border border-red-200 dark:border-red-800/40">
-                    15 Layouts Available
+                    22 Layouts Available
                   </span>
                 </div>
 
@@ -582,6 +635,10 @@ export function YouTubeThumbnailGenerator() {
                       type="button"
                       onClick={() => {
                         setVideoTitle(t);
+                        if (t.includes('Data Analytics')) {
+                          handleLoadAiRoadmapTemplate();
+                          return;
+                        }
                         const words = t.replace(/[^\w\s]/g, '').split(' ');
                         setPunchyHeadline(words.slice(0, 3).join(' ').toUpperCase());
                         setPunchySubtext(words.slice(3, 6).join(' ').toUpperCase() || 'MUST WATCH');
@@ -649,6 +706,255 @@ export function YouTubeThumbnailGenerator() {
                     onChange={(e) => setPunchySubtext(e.target.value)}
                     className="w-full px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-black text-slate-900 dark:text-white uppercase"
                   />
+                </div>
+              </div>
+
+              {/* ⭐ DEDICATED 3D STARBURST BADGE EDITOR (THE MARKED COMPONENT) */}
+              <div className="p-4.5 rounded-2xl bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-slate-900 border-2 border-amber-500/50 shadow-lg space-y-4">
+                <div className="flex items-center justify-between pb-2 border-b border-amber-500/20">
+                  <div className="flex items-center gap-2.5">
+                    <span className="p-2 rounded-xl bg-amber-500 text-slate-950 font-black text-base shadow-sm">⭐</span>
+                    <div>
+                      <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2">
+                        <span>3D Starburst Badge Customizer</span>
+                        <span className="text-[10px] font-black text-amber-500 bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/40">
+                          Marked Element
+                        </span>
+                      </h3>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Edit text, color gradient, size, tilt angle & placement of the explosive starburst badge
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Visibility Toggle */}
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-200 cursor-pointer bg-white dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                    <input
+                      type="checkbox"
+                      checked={viralConfig.showStarburstBadge !== false}
+                      onChange={(e) =>
+                        setViralConfig((prev) => ({
+                          ...prev,
+                          showStarburstBadge: e.target.checked,
+                        }))
+                      }
+                      className="rounded accent-amber-500 w-4 h-4 cursor-pointer"
+                    />
+                    <span>Show Badge</span>
+                  </label>
+                </div>
+
+                {/* Starburst Text Input & Quick Preset Chips */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                      Starburst Badge Text (Real-Time Live Update)
+                    </label>
+                    <span className="text-[10px] text-amber-500 font-bold">Auto-splits into balanced lines</span>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={viralConfig.starburstBadgeText ?? supportingBadge ?? 'COMPLETE ROADMAP'}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setViralConfig((prev) => ({ ...prev, starburstBadgeText: val }));
+                      setSupportingBadge(val);
+                    }}
+                    placeholder="e.g. COMPLETE ROADMAP or FULL COURSE"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border-2 border-amber-500/50 text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide focus:border-amber-500 focus:outline-none shadow-sm"
+                  />
+
+                  {/* Fast 1-Click Preset Phrases */}
+                  <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                    <span className="text-[10px] font-bold text-slate-400">1-Click Presets:</span>
+                    {[
+                      'COMPLETE ROADMAP',
+                      'FULL COURSE',
+                      '100% FREE',
+                      'NEW 2026',
+                      'STEP BY STEP',
+                      'CRASH COURSE',
+                      'ZERO TO HERO',
+                      'MUST WATCH',
+                    ].map((preset) => (
+                      <button
+                        key={preset}
+                        type="button"
+                        onClick={() => {
+                          setViralConfig((prev) => ({ ...prev, starburstBadgeText: preset }));
+                          setSupportingBadge(preset);
+                          showToast(`Badge text updated to "${preset}"`, 'success');
+                        }}
+                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                          (viralConfig.starburstBadgeText || supportingBadge) === preset
+                            ? 'bg-amber-500 text-slate-950 font-black shadow-xs ring-1 ring-amber-600'
+                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-amber-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
+                        }`}
+                      >
+                        {preset}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Starburst Color Themes */}
+                <div className="space-y-1.5 pt-1">
+                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Badge Color Gradient
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {[
+                      { id: 'gold', label: 'Gold Amber', icon: '⭐', bg: 'bg-gradient-to-r from-yellow-300 to-amber-500 text-slate-950' },
+                      { id: 'red', label: 'Crimson Red', icon: '🔥', bg: 'bg-gradient-to-r from-red-500 to-red-700 text-white' },
+                      { id: 'cyan', label: 'Cyber Cyan', icon: '⚡', bg: 'bg-gradient-to-r from-cyan-300 to-blue-500 text-slate-950' },
+                      { id: 'green', label: 'Emerald Lime', icon: '📈', bg: 'bg-gradient-to-r from-green-300 to-emerald-600 text-slate-950' },
+                      { id: 'purple', label: 'Ultraviolet', icon: '💜', bg: 'bg-gradient-to-r from-fuchsia-400 to-purple-600 text-white' },
+                      { id: 'orange', label: 'Magma Orange', icon: '🟠', bg: 'bg-gradient-to-r from-amber-300 to-orange-600 text-slate-950' },
+                      { id: 'white', label: 'Crisp White', icon: '⚪', bg: 'bg-gradient-to-r from-white to-slate-200 text-slate-950 border border-slate-300' },
+                    ].map((col) => {
+                      const isSel = (viralConfig.starburstColor || 'gold') === col.id;
+                      return (
+                        <button
+                          key={col.id}
+                          type="button"
+                          onClick={() => setViralConfig((prev) => ({ ...prev, starburstColor: col.id as any }))}
+                          className={`p-2 rounded-xl text-left font-bold text-xs flex items-center justify-between cursor-pointer transition-all border ${
+                            isSel
+                              ? 'border-amber-500 ring-2 ring-amber-500/40 shadow-sm'
+                              : 'border-slate-200 dark:border-slate-700 opacity-80 hover:opacity-100'
+                          } ${col.bg}`}
+                        >
+                          <span className="flex items-center gap-1.5 text-[11px] font-black">
+                            <span>{col.icon}</span>
+                            <span>{col.label}</span>
+                          </span>
+                          {isSel && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Badge Size, Tilt Angle & Spikes */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-amber-500/20">
+                  {/* Badge Size */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                      <span>Badge Size ({viralConfig.starburstSize ?? 88}px)</span>
+                      <button
+                        type="button"
+                        onClick={() => setViralConfig((prev) => ({ ...prev, starburstSize: 88 }))}
+                        className="text-[10px] text-amber-500 font-bold hover:underline cursor-pointer"
+                      >
+                        Reset
+                      </button>
+                    </div>
+                    <input
+                      type="range"
+                      min="60"
+                      max="130"
+                      step="2"
+                      value={viralConfig.starburstSize ?? 88}
+                      onChange={(e) =>
+                        setViralConfig((prev) => ({
+                          ...prev,
+                          starburstSize: parseInt(e.target.value, 10),
+                        }))
+                      }
+                      className="w-full accent-amber-500 cursor-pointer"
+                    />
+                  </div>
+
+                  {/* Badge Tilt Angle */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                      <span>Badge Angle ({viralConfig.starburstAngle ?? -10}°)</span>
+                      <button
+                        type="button"
+                        onClick={() => setViralConfig((prev) => ({ ...prev, starburstAngle: -10 }))}
+                        className="text-[10px] text-amber-500 font-bold hover:underline cursor-pointer"
+                      >
+                        Reset -10°
+                      </button>
+                    </div>
+                    <input
+                      type="range"
+                      min="-25"
+                      max="25"
+                      step="1"
+                      value={viralConfig.starburstAngle ?? -10}
+                      onChange={(e) =>
+                        setViralConfig((prev) => ({
+                          ...prev,
+                          starburstAngle: parseInt(e.target.value, 10),
+                        }))
+                      }
+                      className="w-full accent-amber-500 cursor-pointer"
+                    />
+                  </div>
+
+                  {/* Spikes Count */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                      <span>Spikes Count</span>
+                      <span className="text-[10px] font-black text-amber-500">
+                        {viralConfig.starburstSpikes ?? 18} pts
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {[12, 16, 18, 20, 24].map((sp) => (
+                        <button
+                          key={sp}
+                          type="button"
+                          onClick={() => setViralConfig((prev) => ({ ...prev, starburstSpikes: sp }))}
+                          className={`flex-1 py-1 rounded-lg text-[10px] font-bold cursor-pointer transition-all ${
+                            (viralConfig.starburstSpikes ?? 18) === sp
+                              ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
+                              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 border border-slate-200 dark:border-slate-700'
+                          }`}
+                        >
+                          {sp}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Position Presets */}
+                <div className="space-y-1 pt-1">
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span>Badge Screen Position</span>
+                  </div>
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {[
+                      { id: 'top-left', label: 'Top-Left' },
+                      { id: 'above-headline', label: 'Above Title' },
+                      { id: 'top-center', label: 'Center' },
+                      { id: 'top-right', label: 'Top-Right' },
+                    ].map((pos) => {
+                      const isSel = (viralConfig.starburstPositionPreset || 'top-left') === pos.id;
+                      return (
+                        <button
+                          key={pos.id}
+                          type="button"
+                          onClick={() =>
+                            setViralConfig((prev) => ({
+                              ...prev,
+                              starburstPositionPreset: pos.id as any,
+                            }))
+                          }
+                          className={`py-1.5 px-2 rounded-xl text-[11px] font-bold text-center cursor-pointer transition-all border ${
+                            isSel
+                              ? 'bg-amber-500 text-slate-950 border-amber-500 font-black shadow-xs'
+                              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50'
+                          }`}
+                        >
+                          {pos.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
@@ -836,13 +1142,97 @@ export function YouTubeThumbnailGenerator() {
                       <div className="text-[10px] text-slate-400">10X views pill</div>
                     </div>
                   </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setViralConfig((prev) => ({
+                        ...prev,
+                        showStarburstBadge: !prev.showStarburstBadge,
+                      }))
+                    }
+                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                      viralConfig.showStarburstBadge
+                        ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-500 text-amber-950 dark:text-amber-200 ring-1 ring-amber-500'
+                        : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300'
+                    }`}
+                  >
+                    <span className="text-base">⭐</span>
+                    <div>
+                      <div className="text-xs font-bold">3D Starburst</div>
+                      <div className="text-[10px] text-slate-400">Complete roadmap badge</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setViralConfig((prev) => ({
+                        ...prev,
+                        showTechPills: !prev.showTechPills,
+                      }))
+                    }
+                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                      viralConfig.showTechPills
+                        ? 'bg-cyan-50 dark:bg-cyan-950/40 border-cyan-500 text-cyan-950 dark:text-cyan-200 ring-1 ring-cyan-500'
+                        : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300'
+                    }`}
+                  >
+                    <span className="text-base">🚀</span>
+                    <div>
+                      <div className="text-xs font-bold">Tech Logo Pills</div>
+                      <div className="text-[10px] text-slate-400">Python, AI, SQL badges</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setViralConfig((prev) => ({
+                        ...prev,
+                        showDataWave: !prev.showDataWave,
+                      }))
+                    }
+                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                      viralConfig.showDataWave
+                        ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-950 dark:text-emerald-200 ring-1 ring-emerald-500'
+                        : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300'
+                    }`}
+                  >
+                    <span className="text-base">📊</span>
+                    <div>
+                      <div className="text-xs font-bold">3D Data Wave</div>
+                      <div className="text-[10px] text-slate-400">Neon trendline chart</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setViralConfig((prev) => ({
+                        ...prev,
+                        enhancedLighting: !prev.enhancedLighting,
+                      }))
+                    }
+                    className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                      viralConfig.enhancedLighting
+                        ? 'bg-fuchsia-50 dark:bg-fuchsia-950/40 border-fuchsia-500 text-fuchsia-950 dark:text-fuchsia-200 ring-1 ring-fuchsia-500'
+                        : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300'
+                    }`}
+                  >
+                    <span className="text-base">✨</span>
+                    <div>
+                      <div className="text-xs font-bold">Dual-Tone Rim Light</div>
+                      <div className="text-[10px] text-slate-400">Cyan & purple glow</div>
+                    </div>
+                  </button>
                 </div>
 
-                {/* Text Tilt Angle & Custom CTR Badge text */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-amber-500/20">
+                {/* Text Tilt Angle, 3D Depth & Custom Badge texts */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-amber-500/20">
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
-                      <span>Action Slant Angle ({viralConfig.textAngle ?? -4}°)</span>
+                      <span>Action Slant ({viralConfig.textAngle ?? -4}°)</span>
                       <button
                         type="button"
                         onClick={() => setViralConfig((prev) => ({ ...prev, textAngle: 0 }))}
@@ -868,19 +1258,46 @@ export function YouTubeThumbnailGenerator() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                      Custom CTR Badge Text
-                    </label>
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                      <span>3D Extrusion Depth ({viralConfig.text3dDepth ?? 10}px)</span>
+                      <button
+                        type="button"
+                        onClick={() => setViralConfig((prev) => ({ ...prev, text3dDepth: 10 }))}
+                        className="text-[10px] text-red-500 font-bold hover:underline cursor-pointer"
+                      >
+                        Default
+                      </button>
+                    </div>
                     <input
-                      type="text"
-                      value={viralConfig.ctrBadgeText || '10X MORE VIEWS!'}
+                      type="range"
+                      min="0"
+                      max="24"
+                      step="2"
+                      value={viralConfig.text3dDepth ?? 10}
                       onChange={(e) =>
                         setViralConfig((prev) => ({
                           ...prev,
-                          ctrBadgeText: e.target.value,
+                          text3dDepth: parseInt(e.target.value, 10),
                         }))
                       }
-                      placeholder="e.g. 10X MORE VIEWS! or +13.6% CTR"
+                      className="w-full accent-amber-500 cursor-pointer"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                      Starburst Badge Text
+                    </label>
+                    <input
+                      type="text"
+                      value={viralConfig.starburstBadgeText || 'COMPLETE ROADMAP'}
+                      onChange={(e) =>
+                        setViralConfig((prev) => ({
+                          ...prev,
+                          starburstBadgeText: e.target.value,
+                        }))
+                      }
+                      placeholder="e.g. COMPLETE ROADMAP"
                       className="w-full px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-900 dark:text-white uppercase"
                     />
                   </div>
@@ -1575,6 +1992,27 @@ export function YouTubeThumbnailGenerator() {
                   16:9 Frame-Locked
                 </span>
               </div>
+            </div>
+
+            {/* Quick Starburst Badge status and direct edit chip */}
+            <div className="flex items-center justify-between p-2 px-3 rounded-xl bg-gradient-to-r from-amber-500/15 to-orange-500/10 border border-amber-500/30 text-xs shadow-xs">
+              <div className="flex items-center gap-2 truncate">
+                <span className="text-amber-500 font-black">⭐ Starburst:</span>
+                <span className="font-black text-slate-900 dark:text-white uppercase truncate">
+                  "{viralConfig.starburstBadgeText || supportingBadge || 'COMPLETE ROADMAP'}"
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('text-layout');
+                  showToast('Opened Starburst Badge Customizer', 'info');
+                }}
+                className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-[11px] cursor-pointer shadow-xs transition-all flex items-center gap-1 flex-shrink-0"
+              >
+                <span>Edit Badge</span>
+                <span>✏️</span>
+              </button>
             </div>
 
             {/* Main Interactive Canvas Display (Guaranteed 16:9, drag-and-drop enabled, and zero image overflow) */}

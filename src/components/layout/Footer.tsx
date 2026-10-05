@@ -1,5 +1,6 @@
 import React from 'react';
-import { Wrench, ShieldCheck, Heart, Github, Twitter, Sparkles, Zap, Lock } from 'lucide-react';
+import { ShieldCheck, Heart, Github, Twitter, Sparkles, Zap, Lock } from 'lucide-react';
+import { Logo } from '../common/Logo';
 import { siteConfig } from '../../config/site.config';
 import { categories } from '../../data/categories';
 import { tools } from '../../data/tools';
@@ -46,11 +47,8 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-xs">
         {/* Brand Column */}
         <div className="col-span-2 space-y-4">
-          <a href="#/" className="flex items-center gap-2 font-extrabold text-base text-slate-900 dark:text-white">
-            <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white">
-              <Wrench className="w-4 h-4" />
-            </div>
-            <span>ToolBox<span className="text-indigo-600 dark:text-indigo-400">Hub</span></span>
+          <a href="#/" className="inline-block tracking-tight">
+            <Logo size="md" />
           </a>
           <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
             Free, fast, and powerful browser-based online tools designed for developers, students, writers, and digital professionals.

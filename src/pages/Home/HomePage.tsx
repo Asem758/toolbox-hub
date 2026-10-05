@@ -20,6 +20,7 @@ import { ToolCard } from '../../components/tools/ToolCard';
 import { AdSlot } from '../../components/ads/AdSlot';
 import { useFavorites } from '../../context/FavoritesContext';
 import { ToolDefinition } from '../../types/tools';
+import { Logo } from '../../components/common/Logo';
 
 interface HomePageProps {
   onOpenSearch: () => void;
@@ -48,9 +49,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenSearch, onSelectTool }
       <section className="relative overflow-hidden pt-12 md:pt-20 pb-12 bg-linear-to-b from-indigo-50/50 via-transparent to-transparent dark:from-indigo-950/20 dark:via-transparent">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-indigo-600 dark:text-indigo-400 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            100% Free, Private & In-Browser Tools
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 shadow-xs">
+            <Logo size="xs" showText={false} withHoverEffect={false} />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-indigo-600 dark:text-indigo-400 font-bold">ToolBox Hub</span>
+            <span className="text-slate-400 dark:text-slate-600">•</span>
+            <span>100% Free, Private & In-Browser Tools</span>
           </div>
 
           {/* Main Title */}

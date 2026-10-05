@@ -190,6 +190,15 @@ export const THUMBNAIL_LAYOUTS: LayoutMetadata[] = [
     icon: '👁️',
     bestFor: 'Crypto Hype, Tech Shocks, Insane Challenges, Gaming',
   },
+  {
+    id: 'ai-roadmap-masterclass',
+    name: 'Tech & AI Roadmap 3D ("DATA ANALYTICS WITH AI")',
+    category: 'Educational',
+    description: 'Massive 3D extruded title ("DATA ANALYTICS" + "WITH AI"), explosive starburst badge ("COMPLETE ROADMAP"), workstation studio, glowing dual-tone presenter cutout, 3D rising data wave, and floating tech logo pills.',
+    badge: 'EDUCATION & TUTORIAL',
+    icon: '🚀',
+    bestFor: 'AI Tools, Data Science, Coding Roadmaps, Tech Masterclasses, Crash Courses',
+  },
 ];
 
 export const NICHE_PRESETS: Record<YouTubeNiche, NicheCategoryConfig> = {
@@ -208,10 +217,19 @@ export const NICHE_PRESETS: Record<YouTubeNiche, NicheCategoryConfig> = {
   education: {
     id: 'education',
     name: 'Education & Tutorials',
-    subcategories: ['How-To Guides', 'Science & Physics', 'Languages', 'Coding Crash Courses', 'Productivity & Study', 'Math & Logic'],
-    defaultStyle: 'educational-checklist',
-    suggestedPalettes: ['electric-neon', 'emerald-wealth', 'youtube-classic'],
+    subcategories: [
+      'Tech & AI Roadmaps (3D Masterclass)',
+      'Data Science & Analytics',
+      'Coding Crash Courses',
+      'How-To Guides',
+      'Science & Physics',
+      'Languages',
+      'Productivity & Study',
+    ],
+    defaultStyle: 'ai-roadmap-masterclass',
+    suggestedPalettes: ['tech-roadmap-neon', 'cyber-cyan', 'electric-neon', 'emerald-wealth'],
     sampleTitles: [
+      'Data Analytics with AI - Complete Roadmap & Full Course',
       'The Only Python Roadmap You Need in 2026',
       'Learn Calculus in 45 Minutes (Visual Proofs)',
       '3 Study Habits That Got Me Into Harvard',
@@ -343,6 +361,21 @@ export const COLOR_THEMES: ColorTheme[] = [
   },
 
   // 2. Gaming, Cyber & Esports
+  {
+    id: 'tech-roadmap-neon',
+    name: 'Tech Studio & Neon Dual-Tone (AI Masterclass)',
+    category: 'Gaming & Cyber',
+    bgGradient: ['#070a1a', '#020409'],
+    primaryAccent: '#f59e0b',
+    highlightColor: '#00f0ff',
+    textColor: '#ffffff',
+    textMuted: '#94a3b8',
+    badgeBg: '#facc15',
+    badgeText: '#000000',
+    cardBg: 'rgba(7, 10, 26, 0.92)',
+    cardBorder: 'rgba(0, 240, 255, 0.5)',
+    glowColor: '#00f0ff',
+  },
   {
     id: 'cyber-cyan',
     name: 'Cyber Cyan & Deep Navy (Tech Matrix)',
@@ -648,6 +681,20 @@ export const OVERLAY_PRESETS: OverlayPreset[] = [
     icon: '⯆',
   },
   {
+    id: 'tech-workstation-neon',
+    name: 'Tech Workstation & Monitors',
+    category: 'Tech & Gaming',
+    description: 'Developer multi-monitor desk glow, cyber perspective grid & dual-tone neon backlight',
+    icon: '🖥️',
+  },
+  {
+    id: 'neon-data-grid',
+    name: 'Neon Horizon & Rising Data Wave',
+    category: 'Tech & Gaming',
+    description: 'Glowing dynamic 3D line chart, data node pulses & cybernetic floor grid',
+    icon: '📊',
+  },
+  {
     id: 'none',
     name: 'Clean Gradient (No FX)',
     category: 'Minimal',
@@ -658,6 +705,24 @@ export const OVERLAY_PRESETS: OverlayPreset[] = [
 
 export const FONTS_LIST: FontPreset[] = [
   // Viral & Ultra Bold
+  {
+    id: 'titan',
+    name: 'Titan One (Ultra-Heavy 3D Pop)',
+    category: 'Viral & Bold',
+    css: '"Titan One", Impact, sans-serif',
+    weight: '400',
+    previewName: 'TITAN ONE',
+    description: 'Extra-fat rounded display font. Unmatched depth for 3D extrusion and viral thumbnail punch.',
+  },
+  {
+    id: 'outfit',
+    name: 'Outfit 900 (Extra-Bold Geometric Display)',
+    category: 'Viral & Bold',
+    css: '"Outfit", "Montserrat", sans-serif',
+    weight: '900',
+    previewName: 'OUTFIT 900',
+    description: 'Ultra-heavy geometric modern sans. Extreme authority and razor-sharp mobile legibility.',
+  },
   {
     id: 'anton',
     name: 'Anton (MrBeast / Ultra Punch)',

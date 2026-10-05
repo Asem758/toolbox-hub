@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
+import { Logo } from '../../components/common/Logo';
 import { Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 import { useToast } from '../../context/ToastContext';
 
@@ -25,13 +26,16 @@ export const ContactPage: React.FC = () => {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <Breadcrumb items={[{ label: 'Contact Us' }]} />
 
-      <div className="space-y-2">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          Contact & Tool Suggestions
-        </h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Have an idea for a new utility tool or noticed an issue? We'd love to hear from you.
-        </p>
+      <div className="flex items-center gap-4">
+        <Logo size="lg" showText={false} />
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Contact & Tool Suggestions
+          </h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Have an idea for a new utility tool or noticed an issue? We'd love to hear from you.
+          </p>
+        </div>
       </div>
 
       <div className="p-6 md:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">

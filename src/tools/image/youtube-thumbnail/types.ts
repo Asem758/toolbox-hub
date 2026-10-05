@@ -28,7 +28,10 @@ export type ThumbnailLayout =
   | 'money-wealth-blueprint' // 18. Finance Reveal: "50,000$ PER MONTH" + Cash Stacks + Gold Metric Glow + Pointing Presenter
   | 'doodle-chalk-arrow'     // 19. High Curiosity: Hand-drawn white circular loops + curved arrow pointing to shocked face
   | 'thumbnail-inception-grid' // 20. Showcase: Floating multi-thumbnail cards inception + presenter pointing + tutorial hook
-  | 'laser-eyes-shock';      // 21. Neon laser eyes energy surge + 10X views neon badge + high octane backdrop
+  | 'laser-eyes-shock'       // 21. Neon laser eyes energy surge + 10X views neon badge + high octane backdrop
+  | 'ai-roadmap-masterclass'; // 22. Tech & AI Roadmap 3D: Workstation + Starburst + 3D Titles + Logo Pills + Data Wave
+
+export type StarburstColorScheme = 'gold' | 'red' | 'cyan' | 'green' | 'purple' | 'orange' | 'white';
 
 export interface ViralGraphicsConfig {
   showGrowthArrow?: boolean;       // 3D Neon Green Upward Trending Arrow
@@ -39,7 +42,20 @@ export interface ViralGraphicsConfig {
   showCtrBadge?: boolean;          // "10X MORE VIEWS!" / "13.6% CTR" badge
   ctrBadgeText?: string;           // Custom text e.g. "10X MORE VIEWS!" or "13.6% CTR"
   textAngle?: number;              // -8 to +8 degrees dynamic action tilt
-  text3dDepth?: number;            // 0 to 18 px 3D extrusion depth
+  text3dDepth?: number;            // 0 to 24 px 3D extrusion depth
+  // Upgraded High-CTR Visual Accents
+  showStarburstBadge?: boolean;    // 3D Explosive Comic Starburst Badge ("COMPLETE ROADMAP", "FULL COURSE")
+  starburstBadgeText?: string;     // Text for starburst badge
+  starburstColor?: StarburstColorScheme; // 'gold' | 'red' | 'cyan' | 'green' | 'purple' | 'orange' | 'white'
+  starburstSize?: number;          // Outer radius: 60 to 140 px (default 86)
+  starburstAngle?: number;         // -25 to +25 degrees tilt
+  starburstPosX?: number;          // Custom X coordinate offset
+  starburstPosY?: number;          // Custom Y coordinate offset
+  starburstPositionPreset?: 'top-left' | 'top-center' | 'top-right' | 'above-headline';
+  starburstSpikes?: number;        // Spike count: 12, 16, 18, 20, 24 (default 18)
+  showTechPills?: boolean;         // Floating 3D tech/tool logo capsules (Python, AI/ChatGPT, SQL, PowerBI, Excel)
+  showDataWave?: boolean;          // Dynamic 3D neon trendline chart wave with glowing nodes
+  enhancedLighting?: boolean;      // Dual-tone neon rim lighting (cyan & magenta) + volumetric backlight + lens flares
 }
 
 export type OverlayStyle =
@@ -55,6 +71,8 @@ export type OverlayStyle =
   | 'glitch-scanlines'
   | 'diagonal-slits'
   | 'dark-fade-bottom'
+  | 'tech-workstation-neon'
+  | 'neon-data-grid'
   | 'none';
 
 export interface LayoutMetadata {

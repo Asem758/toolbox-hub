@@ -1,9 +1,13 @@
 import React from 'react';
 import { Home, ArrowLeft } from 'lucide-react';
+import { Logo } from '../../components/common/Logo';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-24 text-center space-y-6">
+      <div className="flex justify-center">
+        <Logo size="lg" />
+      </div>
       <div className="text-6xl font-black text-indigo-600 dark:text-indigo-400">404</div>
       <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">Page Not Found</h1>
       <p className="text-sm text-slate-500 max-w-md mx-auto">

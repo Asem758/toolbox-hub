@@ -411,6 +411,833 @@ function drawBackgroundOverlay(
     ctx.fillRect(0, 0, W, H);
   }
 
+  // 12. TECH WORKSTATION & MONITORS (Developer studio with dual monitors & code glow)
+  else if (overlayStyle === 'tech-workstation-neon') {
+    drawDeveloperWorkstationBackdrop(ctx, W, H, theme);
+  }
+
+  // 13. NEON DATA HORIZON & GRID (Rising data wave with cyber horizon)
+  else if (overlayStyle === 'neon-data-grid') {
+    drawNeonDataGridOverlay(ctx, W, H, theme);
+  }
+
+  ctx.restore();
+}
+
+/**
+ * Draws a High-Fidelity Modern Tech & Developer Workstation Backdrop
+ * Features dual glowing widescreen monitors, code syntax highlighting, analytics graphs,
+ * cyber perspective grid, and dramatic dual-tone cyan/purple ambient studio lighting.
+ */
+export function drawDeveloperWorkstationBackdrop(
+  ctx: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  theme: ColorTheme
+) {
+  ctx.save();
+
+  // 1. Dual-Tone Volumetric Atmosphere
+  const cyanAura = ctx.createRadialGradient(W * 0.25, H * 0.35, 30, W * 0.25, H * 0.35, 520);
+  cyanAura.addColorStop(0, 'rgba(0, 240, 255, 0.25)');
+  cyanAura.addColorStop(0.6, 'rgba(6, 182, 212, 0.08)');
+  cyanAura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = cyanAura;
+  ctx.fillRect(0, 0, W, H);
+
+  const purpleAura = ctx.createRadialGradient(W * 0.8, H * 0.3, 40, W * 0.8, H * 0.3, 560);
+  purpleAura.addColorStop(0, 'rgba(192, 38, 211, 0.28)');
+  purpleAura.addColorStop(0.6, 'rgba(147, 51, 234, 0.1)');
+  purpleAura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = purpleAura;
+  ctx.fillRect(0, 0, W, H);
+
+  // 2. Cyber Horizon Grid on lower canvas
+  const horizonY = H * 0.54;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)';
+  ctx.lineWidth = 1.2;
+
+  // Horizontal receding grid lines
+  for (let i = 0; i < 9; i++) {
+    const y = horizonY + Math.pow(i / 8, 1.8) * (H - horizonY);
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(W, y);
+    ctx.stroke();
+  }
+
+  // Perspective vertical lines converging to center horizon
+  const fovCenterX = W * 0.48;
+  for (let x = -200; x <= W + 200; x += 75) {
+    ctx.beginPath();
+    ctx.moveTo(fovCenterX, horizonY);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // 3. Monitor #1 (Left Workstation Screen - Code Editor)
+  ctx.save();
+  const m1X = 60;
+  const m1Y = 70;
+  const m1W = 400;
+  const m1H = 260;
+
+  // Monitor Glow
+  ctx.shadowColor = 'rgba(0, 240, 255, 0.4)';
+  ctx.shadowBlur = 32;
+
+  // Monitor Frame & Glass Panel
+  ctx.fillStyle = '#090d19';
+  ctx.beginPath();
+  ctx.roundRect(m1X, m1Y, m1W, m1H, 14);
+  ctx.fill();
+
+  // Bezel Border
+  ctx.strokeStyle = 'rgba(0, 240, 255, 0.5)';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Top Window Header Bar
+  ctx.shadowColor = 'transparent';
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath();
+  ctx.roundRect(m1X, m1Y, m1W, 28, [14, 14, 0, 0]);
+  ctx.fill();
+
+  // Window Dots (Red, Yellow, Green)
+  const dots = ['#ef4444', '#facc15', '#22c55e'];
+  dots.forEach((color, idx) => {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(m1X + 18 + idx * 15, m1Y + 14, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  // Editor Code Lines (Syntax Highlighted)
+  const codeLines = [
+    { indent: 14, w: 90, color: '#38bdf8' },
+    { indent: 35, w: 140, color: '#facc15' },
+    { indent: 35, w: 180, color: '#e2e8f0' },
+    { indent: 55, w: 110, color: '#c084fc' },
+    { indent: 55, w: 160, color: '#4ade80' },
+    { indent: 35, w: 70, color: '#38bdf8' },
+    { indent: 14, w: 120, color: '#f43f5e' },
+    { indent: 35, w: 200, color: '#38bdf8' },
+    { indent: 55, w: 130, color: '#facc15' },
+    { indent: 35, w: 90, color: '#e2e8f0' },
+  ];
+
+  codeLines.forEach((line, idx) => {
+    const lineY = m1Y + 46 + idx * 20;
+    ctx.fillStyle = line.color;
+    ctx.beginPath();
+    ctx.roundRect(m1X + line.indent, lineY, line.w, 9, 3);
+    ctx.fill();
+  });
+
+  ctx.restore();
+
+  // 4. Monitor #2 (Center/Right Workstation Screen - Data Analytics & Charts)
+  ctx.save();
+  const m2X = 390;
+  const m2Y = 110;
+  const m2W = 350;
+  const m2H = 230;
+
+  // Monitor Glow
+  ctx.shadowColor = 'rgba(192, 38, 211, 0.4)';
+  ctx.shadowBlur = 32;
+
+  // Monitor Frame & Glass Panel
+  ctx.fillStyle = '#080914';
+  ctx.beginPath();
+  ctx.roundRect(m2X, m2Y, m2W, m2H, 14);
+  ctx.fill();
+
+  ctx.strokeStyle = 'rgba(217, 70, 239, 0.45)';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Window Header
+  ctx.shadowColor = 'transparent';
+  ctx.fillStyle = '#110e24';
+  ctx.beginPath();
+  ctx.roundRect(m2X, m2Y, m2W, 28, [14, 14, 0, 0]);
+  ctx.fill();
+
+  // Bar Chart inside Monitor 2
+  const barHeights = [45, 75, 110, 60, 95, 130, 85];
+  barHeights.forEach((bh, i) => {
+    const bx = m2X + 26 + i * 22;
+    const by = m2Y + m2H - 32 - bh;
+    const barGrad = ctx.createLinearGradient(bx, by, bx, by + bh);
+    barGrad.addColorStop(0, '#00f0ff');
+    barGrad.addColorStop(1, '#6366f1');
+    ctx.fillStyle = barGrad;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, 14, bh, 3);
+    ctx.fill();
+  });
+
+  // Circular Donut Metric Gauge
+  const donutCx = m2X + 250;
+  const donutCy = m2Y + 115;
+  const donutR = 40;
+
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+  ctx.lineWidth = 8;
+  ctx.beginPath();
+  ctx.arc(donutCx, donutCy, donutR, 0, Math.PI * 2);
+  ctx.stroke();
+
+  ctx.strokeStyle = '#facc15';
+  ctx.lineWidth = 8;
+  ctx.beginPath();
+  ctx.arc(donutCx, donutCy, donutR, -Math.PI * 0.5, Math.PI * 0.85);
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 15px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('94%', donutCx, donutCy);
+
+  ctx.restore();
+
+  // 5. Desk Surface with Neon Edge Glow
+  ctx.save();
+  const deskGrad = ctx.createLinearGradient(0, H - 120, 0, H);
+  deskGrad.addColorStop(0, 'rgba(8, 12, 24, 0.8)');
+  deskGrad.addColorStop(1, 'rgba(3, 5, 12, 0.98)');
+  ctx.fillStyle = deskGrad;
+  ctx.fillRect(0, H - 120, W, 120);
+
+  // Neon desk edge line
+  ctx.strokeStyle = '#00f0ff';
+  ctx.shadowColor = '#00f0ff';
+  ctx.shadowBlur = 18;
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(0, H - 120);
+  ctx.lineTo(W, H - 120);
+  ctx.stroke();
+  ctx.restore();
+
+  // 6. Ambient Lens Flare Stars
+  const flares = [
+    { x: m1X + m1W, y: m1Y + 20, r: 8, color: '#00f0ff' },
+    { x: m2X + 15, y: m2Y + 30, r: 10, color: '#d946ef' },
+    { x: W * 0.65, y: 90, r: 6, color: '#facc15' },
+  ];
+
+  flares.forEach((fl) => {
+    ctx.save();
+    ctx.shadowColor = fl.color;
+    ctx.shadowBlur = 20;
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(fl.x, fl.y, fl.r * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 4-point star cross
+    ctx.strokeStyle = fl.color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(fl.x - fl.r * 2.2, fl.y);
+    ctx.lineTo(fl.x + fl.r * 2.2, fl.y);
+    ctx.moveTo(fl.x, fl.y - fl.r * 2.2);
+    ctx.lineTo(fl.x, fl.y + fl.r * 2.2);
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  ctx.restore();
+}
+
+/**
+ * Draws a Neon Horizon & Dynamic Rising Data Grid Overlay
+ */
+export function drawNeonDataGridOverlay(
+  ctx: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  theme: ColorTheme
+) {
+  ctx.save();
+  const horizY = H * 0.52;
+
+  // Horizon glow
+  const horizGlow = ctx.createRadialGradient(W / 2, horizY, 20, W / 2, horizY, 650);
+  horizGlow.addColorStop(0, 'rgba(0, 240, 255, 0.28)');
+  horizGlow.addColorStop(0.5, 'rgba(168, 85, 247, 0.12)');
+  horizGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = horizGlow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Receding Grid Lines
+  ctx.strokeStyle = 'rgba(0, 240, 255, 0.22)';
+  ctx.lineWidth = 1.5;
+  for (let i = 0; i < 10; i++) {
+    const y = horizY + Math.pow(i / 9, 2) * (H - horizY);
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(W, y);
+    ctx.stroke();
+  }
+
+  // Perspective Lines
+  for (let x = -150; x <= W + 150; x += 65) {
+    ctx.beginPath();
+    ctx.moveTo(W / 2, horizY);
+    ctx.lineTo(x, H);
+    ctx.stroke();
+  }
+
+  // Glowing 3D wave in background
+  drawDynamicDataWave(ctx, 40, H * 0.72, W - 60, H * 0.42, '#00f0ff', '#f59e0b');
+
+  ctx.restore();
+}
+
+/**
+ * Draws an Explosive 3D Comic Starburst Badge (High CTR Hook)
+ * Used for "COMPLETE ROADMAP", "FULL COURSE", "100% FREE", etc.
+ */
+export function drawExplosiveStarburstBadge(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  outerRadius: number = 88,
+  innerRadius?: number,
+  numPoints: number = 18,
+  text: string = 'COMPLETE ROADMAP',
+  angleDeg: number = -10,
+  colorScheme: 'gold' | 'red' | 'cyan' | 'green' | 'purple' | 'orange' | 'white' = 'gold',
+  customFill1?: string,
+  customFill2?: string,
+  strokeColor: string = '#000000',
+  textColor?: string
+) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate((angleDeg * Math.PI) / 180);
+
+  const actualInnerR = innerRadius || outerRadius * 0.74;
+
+  // 1. Sharp 3D Multi-Layer Cast Drop Shadow
+  ctx.save();
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.88)';
+  ctx.shadowBlur = 26;
+  ctx.shadowOffsetX = 6;
+  ctx.shadowOffsetY = 10;
+
+  // Starburst Path
+  ctx.beginPath();
+  for (let i = 0; i < numPoints * 2; i++) {
+    const r = i % 2 === 0 ? outerRadius : actualInnerR;
+    const a = (Math.PI / numPoints) * i;
+    const x = Math.cos(a) * r;
+    const y = Math.sin(a) * r;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+
+  // Color gradient definitions
+  let c1 = '#fef08a';
+  let c2 = '#f59e0b';
+  let c3 = '#ea580c';
+  let defaultTextColor = '#000000';
+
+  if (colorScheme === 'red') {
+    c1 = '#fca5a5';
+    c2 = '#ef4444';
+    c3 = '#991b1b';
+    defaultTextColor = '#ffffff';
+  } else if (colorScheme === 'cyan') {
+    c1 = '#a5f3fc';
+    c2 = '#06b6d4';
+    c3 = '#0284c7';
+    defaultTextColor = '#000000';
+  } else if (colorScheme === 'green') {
+    c1 = '#86efac';
+    c2 = '#22c55e';
+    c3 = '#15803d';
+    defaultTextColor = '#000000';
+  } else if (colorScheme === 'purple') {
+    c1 = '#f0abfc';
+    c2 = '#a855f7';
+    c3 = '#6b21a8';
+    defaultTextColor = '#ffffff';
+  } else if (colorScheme === 'orange') {
+    c1 = '#ffedd5';
+    c2 = '#f97316';
+    c3 = '#c2410c';
+    defaultTextColor = '#000000';
+  } else if (colorScheme === 'white') {
+    c1 = '#ffffff';
+    c2 = '#e2e8f0';
+    c3 = '#94a3b8';
+    defaultTextColor = '#000000';
+  }
+
+  if (customFill1) c1 = customFill1;
+  if (customFill2) c2 = customFill2;
+
+  const grad = ctx.createRadialGradient(0, -10, 10, 0, 0, outerRadius);
+  grad.addColorStop(0, c1);
+  grad.addColorStop(0.7, c2);
+  grad.addColorStop(1, c3);
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.restore();
+
+  // 2. Thick Crisp Outer Stroke (Comic / High-CTR style)
+  ctx.beginPath();
+  for (let i = 0; i < numPoints * 2; i++) {
+    const r = i % 2 === 0 ? outerRadius : actualInnerR;
+    const a = (Math.PI / numPoints) * i;
+    const x = Math.cos(a) * r;
+    const y = Math.sin(a) * r;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.strokeStyle = strokeColor;
+  ctx.lineWidth = 5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // 3. Inner White Specular Ring
+  ctx.beginPath();
+  ctx.arc(0, 0, actualInnerR * 0.78, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // 4. Center Punchy Text (1, 2, or 3 lines with auto-fit)
+  let lines: string[] = [];
+  if (text.includes('\n')) {
+    lines = text.split('\n').map((l) => l.trim().toUpperCase()).filter(Boolean);
+  } else {
+    const words = text.trim().split(/\s+/);
+    if (words.length <= 1) {
+      lines = [text.trim().toUpperCase()];
+    } else if (words.length === 2) {
+      lines = [words[0].toUpperCase(), words[1].toUpperCase()];
+    } else {
+      const mid = Math.ceil(words.length / 2);
+      lines = [words.slice(0, mid).join(' ').toUpperCase(), words.slice(mid).join(' ').toUpperCase()];
+    }
+  }
+
+  const finalTextColor = textColor || defaultTextColor;
+  ctx.fillStyle = finalTextColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // Calculate font size to fit comfortably inside the starburst inner circle
+  const maxAllowedW = actualInnerR * 1.5;
+  let baseFontSize = lines.length === 1 ? Math.round(actualInnerR * 0.42) : Math.round(actualInnerR * 0.32);
+  baseFontSize = Math.max(12, Math.min(30, baseFontSize));
+
+  ctx.font = `900 ${baseFontSize}px "Anton", Impact, sans-serif`;
+  let maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
+  while (maxLineW > maxAllowedW && baseFontSize > 10) {
+    baseFontSize -= 1;
+    ctx.font = `900 ${baseFontSize}px "Anton", Impact, sans-serif`;
+    maxLineW = Math.max(...lines.map((l) => ctx.measureText(l).width));
+  }
+
+  const lineHeight = baseFontSize * 1.1;
+  const startY = -((lines.length - 1) * lineHeight) / 2;
+
+  lines.forEach((line, idx) => {
+    const ly = startY + idx * lineHeight;
+    if (finalTextColor === '#ffffff') {
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+      ctx.shadowBlur = 4;
+      ctx.shadowOffsetY = 1.5;
+    }
+    ctx.fillText(line, 0, ly);
+    ctx.shadowColor = 'transparent';
+  });
+
+  ctx.restore();
+}
+
+/**
+ * Draws a Floating 3D Tech Logo Capsule Pill (Python, ChatGPT, SQL, PowerBI, Excel)
+ */
+export function draw3DTechLogoPill(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  type: string,
+  label: string
+) {
+  ctx.save();
+  const w = 110;
+  const h = 42;
+  const r = 21;
+
+  // 3D Shadow
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+  ctx.shadowBlur = 12;
+  ctx.shadowOffsetY = 6;
+
+  // Frosted dark pill background
+  const pillGrad = ctx.createLinearGradient(x, y, x, y + h);
+  pillGrad.addColorStop(0, 'rgba(15, 23, 42, 0.95)');
+  pillGrad.addColorStop(1, 'rgba(5, 10, 22, 0.98)');
+  ctx.fillStyle = pillGrad;
+  ctx.beginPath();
+  ctx.roundRect(x, y, w, h, r);
+  ctx.fill();
+
+  // Glow Border matching brand
+  let glowColor = '#00f0ff';
+  if (type === 'python') glowColor = '#38bdf8';
+  else if (type === 'chatgpt') glowColor = '#10b981';
+  else if (type === 'sql') glowColor = '#06b6d4';
+  else if (type === 'powerbi') glowColor = '#f59e0b';
+  else if (type === 'excel') glowColor = '#22c55e';
+
+  ctx.shadowColor = glowColor;
+  ctx.shadowBlur = 8;
+  ctx.strokeStyle = glowColor;
+  ctx.lineWidth = 1.8;
+  ctx.stroke();
+
+  // Reset shadow for inner icons & text
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+
+  // Icon drawing (left side of pill: x + 18, y + 21)
+  const iconX = x + 20;
+  const iconY = y + 21;
+
+  if (type === 'python') {
+    // Dual yellow/blue snake heads
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath();
+    ctx.arc(iconX - 2, iconY - 3, 6, Math.PI * 0.5, Math.PI * 1.5);
+    ctx.lineTo(iconX + 3, iconY - 7);
+    ctx.arc(iconX + 3, iconY - 3, 4, -Math.PI * 0.5, Math.PI * 0.5);
+    ctx.fill();
+
+    ctx.fillStyle = '#facc15';
+    ctx.beginPath();
+    ctx.arc(iconX + 2, iconY + 3, 6, -Math.PI * 0.5, Math.PI * 0.5);
+    ctx.lineTo(iconX - 3, iconY + 7);
+    ctx.arc(iconX - 3, iconY + 3, 4, Math.PI * 0.5, -Math.PI * 0.5);
+    ctx.fill();
+
+    // Eye dots
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(iconX - 3, iconY - 4, 1.2, 0, Math.PI * 2);
+    ctx.arc(iconX + 3, iconY + 4, 1.2, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (type === 'chatgpt') {
+    // OpenAI Rosette
+    ctx.strokeStyle = '#10a37f';
+    ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = (Math.PI / 3) * i;
+      const rx = iconX + Math.cos(a) * 4;
+      const ry = iconY + Math.sin(a) * 4;
+      ctx.arc(rx, ry, 5, a, a + Math.PI);
+    }
+    ctx.stroke();
+  } else if (type === 'sql') {
+    // 3D Database cylinder stack
+    ctx.fillStyle = '#06b6d4';
+    ctx.strokeStyle = '#22d3ee';
+    ctx.lineWidth = 1.2;
+    for (let i = -1; i <= 1; i++) {
+      const cy = iconY + i * 5;
+      ctx.beginPath();
+      ctx.ellipse(iconX, cy, 7, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    }
+  } else if (type === 'powerbi') {
+    // PowerBI 3-bar column growth
+    ctx.fillStyle = '#f59e0b';
+    ctx.fillRect(iconX - 7, iconY, 3, 8);
+    ctx.fillRect(iconX - 2, iconY - 4, 3, 12);
+    ctx.fillRect(iconX + 3, iconY - 8, 3, 16);
+  } else if (type === 'excel') {
+    // Excel green sheet box
+    ctx.fillStyle = '#16a34a';
+    ctx.fillRect(iconX - 7, iconY - 7, 14, 14);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('X', iconX, iconY);
+  } else {
+    // Generic sparkle
+    ctx.fillStyle = '#a855f7';
+    ctx.font = '900 12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('✦', iconX, iconY);
+  }
+
+  // Label text
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 13px "Inter", "Montserrat", sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(label, iconX + 14, iconY + 1);
+
+  ctx.restore();
+}
+
+/**
+ * Draws a Dynamic 3D Neon Data Wave (Growth / Trend Chart)
+ */
+export function drawDynamicDataWave(
+  ctx: CanvasRenderingContext2D,
+  startX: number,
+  startY: number,
+  endX: number,
+  endY: number,
+  color1: string = '#00f0ff',
+  color2: string = '#d946ef'
+) {
+  ctx.save();
+  const points = [
+    { x: startX, y: startY },
+    { x: startX + (endX - startX) * 0.18, y: startY - 45 },
+    { x: startX + (endX - startX) * 0.35, y: startY - 20 },
+    { x: startX + (endX - startX) * 0.52, y: startY - 90 },
+    { x: startX + (endX - startX) * 0.70, y: startY - 65 },
+    { x: startX + (endX - startX) * 0.88, y: startY - 140 },
+    { x: endX, y: endY },
+  ];
+
+  // Neon Gradient Line
+  const grad = ctx.createLinearGradient(startX, startY, endX, endY);
+  grad.addColorStop(0, color1);
+  grad.addColorStop(1, color2);
+
+  // Soft Neon Glow Line
+  ctx.shadowColor = color1;
+  ctx.shadowBlur = 24;
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = 6;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let i = 1; i < points.length; i++) {
+    ctx.lineTo(points[i].x, points[i].y);
+  }
+  ctx.stroke();
+
+  // White core line for electric brilliance
+  ctx.shadowColor = 'transparent';
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Glowing Nodes
+  points.forEach((p, idx) => {
+    ctx.save();
+    ctx.shadowColor = color1;
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = idx === points.length - 1 ? '#facc15' : color1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, idx === points.length - 1 ? 7 : 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // White center pip
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // Upward Arrow Head at the peak point
+  const last = points[points.length - 1];
+  ctx.save();
+  ctx.translate(last.x, last.y);
+  ctx.rotate(-Math.PI * 0.3);
+  ctx.fillStyle = '#facc15';
+  ctx.shadowColor = '#facc15';
+  ctx.shadowBlur = 20;
+  ctx.beginPath();
+  ctx.moveTo(14, 0);
+  ctx.lineTo(-8, -8);
+  ctx.lineTo(-4, 0);
+  ctx.lineTo(-8, 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  ctx.restore();
+}
+
+/**
+ * Draws High-Impact 3D Extruded Text with Multi-Layer Drop Shadow and Bevel Highlights
+ */
+export function draw3DExtrudedText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxW: number,
+  baseSize: number,
+  fontFamily: string,
+  weight: string,
+  faceGradient: { colors: [string, string, string?]; dir?: 'vertical' | 'horizontal' },
+  strokeColor: string = '#000000',
+  strokeWidth: number = 14,
+  extrusionDepth: number = 10,
+  extrusionColor: string = '#090d1f',
+  angleDeg: number = 0,
+  align: CanvasTextAlign = 'left'
+) {
+  ctx.save();
+  ctx.translate(x, y);
+  if (angleDeg !== 0) ctx.rotate((angleDeg * Math.PI) / 180);
+
+  ctx.font = `${weight} ${baseSize}px ${fontFamily}`;
+  ctx.textAlign = align;
+
+  // Auto shrink if exceeds max width
+  let currentSize = baseSize;
+  while (ctx.measureText(text).width > maxW && currentSize > 24) {
+    currentSize -= 2;
+    ctx.font = `${weight} ${currentSize}px ${fontFamily}`;
+  }
+
+  // 1. Deep Ambient Occlusion Drop Shadow
+  ctx.save();
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+  ctx.shadowBlur = 28;
+  ctx.shadowOffsetX = 8;
+  ctx.shadowOffsetY = 14;
+  ctx.strokeStyle = '#000000';
+  ctx.lineWidth = strokeWidth + 4;
+  ctx.lineJoin = 'round';
+  ctx.miterLimit = 2;
+  ctx.strokeText(text, 0, 0);
+  ctx.restore();
+
+  // 2. 3D Extrusion Stack Layers (Down and right)
+  if (extrusionDepth > 0) {
+    ctx.save();
+    ctx.fillStyle = extrusionColor;
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeWidth;
+    ctx.lineJoin = 'round';
+    ctx.miterLimit = 2;
+
+    for (let d = extrusionDepth; d >= 1; d--) {
+      const offX = d * 1.2;
+      const offY = d * 1.5;
+      ctx.strokeText(text, offX, offY);
+      ctx.fillText(text, offX, offY);
+    }
+    ctx.restore();
+  }
+
+  // 3. Thick Outer Stroke Outline for extreme contrast
+  if (strokeWidth > 0) {
+    ctx.save();
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeWidth;
+    ctx.lineJoin = 'round';
+    ctx.miterLimit = 2;
+    ctx.strokeText(text, 0, 0);
+    ctx.restore();
+  }
+
+  // 4. Vibrant Gradient Face
+  ctx.save();
+  const textH = currentSize;
+  const grad = ctx.createLinearGradient(0, -textH, 0, 0);
+  grad.addColorStop(0, faceGradient.colors[0]);
+  grad.addColorStop(0.5, faceGradient.colors[1]);
+  if (faceGradient.colors[2]) {
+    grad.addColorStop(1, faceGradient.colors[2]);
+  }
+  ctx.fillStyle = grad;
+  ctx.fillText(text, 0, 0);
+
+  // 5. White Top Bevel Glint
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.32)';
+  ctx.fillText(text, 0, -1);
+  ctx.restore();
+
+  ctx.restore();
+}
+
+/**
+ * Draws Dramatic Dual-Tone Rim Lighting on Subject
+ * Electric cyan on the left, magenta on the right, plus volumetric backlight halo.
+ */
+export function drawDualToneRimLight(
+  ctx: CanvasRenderingContext2D,
+  targetX: number,
+  targetY: number,
+  targetW: number,
+  targetH: number
+) {
+  ctx.save();
+
+  // 1. Volumetric Backlight Halo
+  const halo = ctx.createRadialGradient(
+    targetX + targetW * 0.5,
+    targetY + targetH * 0.4,
+    40,
+    targetX + targetW * 0.5,
+    targetY + targetH * 0.4,
+    targetW * 0.75
+  );
+  halo.addColorStop(0, 'rgba(0, 240, 255, 0.35)');
+  halo.addColorStop(0.5, 'rgba(217, 70, 239, 0.2)');
+  halo.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = halo;
+  ctx.beginPath();
+  ctx.arc(targetX + targetW * 0.5, targetY + targetH * 0.4, targetW * 0.75, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 2. Left Cyan Rim Flare
+  ctx.save();
+  ctx.shadowColor = '#00f0ff';
+  ctx.shadowBlur = 35;
+  ctx.strokeStyle = '#00f0ff';
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(targetX + 30, targetY + targetH - 20);
+  ctx.lineTo(targetX + 8, targetY + targetH * 0.5);
+  ctx.lineTo(targetX + 35, targetY + 30);
+  ctx.stroke();
+  ctx.restore();
+
+  // 3. Right Magenta Rim Flare
+  ctx.save();
+  ctx.shadowColor = '#d946ef';
+  ctx.shadowBlur = 35;
+  ctx.strokeStyle = '#d946ef';
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(targetX + targetW - 30, targetY + targetH - 20);
+  ctx.lineTo(targetX + targetW - 8, targetY + targetH * 0.5);
+  ctx.lineTo(targetX + targetW - 35, targetY + 30);
+  ctx.stroke();
+  ctx.restore();
+
   ctx.restore();
 }
 
@@ -2190,6 +3017,155 @@ export function renderThumbnailCanvas(params: RenderCanvasParams) {
     ctx.restore();
   }
 
+  // 22. TECH & AI ROADMAP 3D (DATA ANALYTICS WITH AI + WORKSTATION + STARBURST + 3D LOGO PILLS)
+  else if (layout === 'ai-roadmap-masterclass') {
+    const pos = imageAdjustments.subjectPosition || 'right';
+    const isLeft = pos === 'left';
+    const isCenter = pos === 'center';
+    const subjX = isCenter ? (W - 530) / 2 : isLeft ? 40 : 690;
+    const subjY = 65;
+    const subjW = 540;
+    const subjH = 590;
+
+    const leftX = isCenter ? 60 : isLeft ? 590 : 65;
+    const maxTextW = isCenter ? W - 120 : 620;
+
+    // Render developer workstation studio if no custom full-canvas background image
+    if (!loadedImage || imageAdjustments.mode !== 'background') {
+      drawDeveloperWorkstationBackdrop(ctx, W, H, theme);
+    }
+
+    // 1. Dual-Tone Volumetric Rim Light for Subject (Electric Cyan + Magenta)
+    drawDualToneRimLight(ctx, subjX, subjY, subjW, subjH);
+
+    // 2. Draw Subject Frame (uploaded photo cutout or stylized enthusiastic creator)
+    drawSubjectFrame(subjX, subjY, subjW, subjH);
+
+    // 3. Top Explosive 3D Starburst Badge (Directly Editable via starburstBadgeText or supportingBadge)
+    const showStarburst = viralConfig?.showStarburstBadge !== false;
+    if (showStarburst) {
+      const starburstLabel = viralConfig?.starburstBadgeText?.trim() || supportingBadge.trim() || 'COMPLETE ROADMAP';
+      const sbRadius = viralConfig?.starburstSize || 88;
+      const sbAngle = viralConfig?.starburstAngle !== undefined
+        ? viralConfig.starburstAngle
+        : (viralConfig?.textAngle ? viralConfig.textAngle - 5 : -10);
+      const sbColor = viralConfig?.starburstColor || 'gold';
+      const sbSpikes = viralConfig?.starburstSpikes || 18;
+
+      let sbX = isLeft ? leftX + 105 : leftX + 90;
+      let sbY = 95;
+
+      if (viralConfig?.starburstPositionPreset === 'top-center') {
+        sbX = W / 2;
+        sbY = 95;
+      } else if (viralConfig?.starburstPositionPreset === 'top-right') {
+        sbX = W - 140;
+        sbY = 95;
+      } else if (viralConfig?.starburstPositionPreset === 'above-headline') {
+        sbX = leftX + 110;
+        sbY = 120;
+      }
+
+      if (viralConfig?.starburstPosX !== undefined) sbX += viralConfig.starburstPosX;
+      if (viralConfig?.starburstPosY !== undefined) sbY += viralConfig.starburstPosY;
+
+      drawExplosiveStarburstBadge(
+        ctx,
+        sbX,
+        sbY,
+        sbRadius,
+        sbRadius * 0.74,
+        sbSpikes,
+        starburstLabel,
+        sbAngle,
+        sbColor
+      );
+    }
+
+    // 4. Line 1: Ultra-Heavy 3D White Title ("DATA ANALYTICS")
+    const angleDeg = viralConfig?.textAngle ?? -4;
+    const depth3d = viralConfig?.text3dDepth ?? 10;
+    const headlineY = 240;
+
+    draw3DExtrudedText(
+      ctx,
+      punchyHeadline.toUpperCase() || 'DATA ANALYTICS',
+      leftX,
+      headlineY,
+      maxTextW,
+      86,
+      selectedFont,
+      selectedWeight,
+      { colors: ['#ffffff', '#f1f5f9', '#cbd5e1'] },
+      '#000000',
+      16,
+      depth3d,
+      '#080c1e',
+      angleDeg,
+      'left'
+    );
+
+    // 5. Line 2: Massive 3D Gradient Hook ("WITH AI")
+    const subtextY = headlineY + 115;
+    draw3DExtrudedText(
+      ctx,
+      punchySubtext.toUpperCase() || 'WITH AI',
+      leftX,
+      subtextY,
+      maxTextW,
+      102,
+      selectedFont,
+      selectedWeight,
+      { colors: ['#ffea79', '#f59e0b', '#ea580c'] },
+      '#000000',
+      18,
+      depth3d + 4,
+      '#3f1d02',
+      angleDeg,
+      'left'
+    );
+
+    // 6. Floating 3D Tech Logo Capsules (Python, ChatGPT, SQL, PowerBI, Excel)
+    const pillsY = subtextY + 45;
+    const pillSpacing = 116;
+    const pills = [
+      { type: 'python', label: 'Python' },
+      { type: 'chatgpt', label: 'ChatGPT' },
+      { type: 'sql', label: 'SQL / DB' },
+      { type: 'powerbi', label: 'Power BI' },
+      { type: 'excel', label: 'Excel' },
+    ];
+
+    pills.forEach((p, idx) => {
+      const px = leftX + idx * pillSpacing;
+      if (px + 110 <= leftX + maxTextW + 30) {
+        draw3DTechLogoPill(ctx, px, pillsY, p.type, p.label);
+      }
+    });
+
+    // 7. Dynamic 3D Neon Data Wave across the bottom
+    drawDynamicDataWave(ctx, leftX, H - 145, leftX + maxTextW, H - 245, '#00f0ff', '#f59e0b');
+
+    // 8. Footer Channel / Roadmap Pill
+    const footY = H - 85;
+    ctx.save();
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 2;
+    ctx.shadowColor = 'rgba(0, 240, 255, 0.35)';
+    ctx.shadowBlur = 14;
+    ctx.beginPath();
+    ctx.roundRect(leftX, footY, 390, 46, 12);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#00f0ff';
+    ctx.font = '900 15px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(`🚀  ${brandKit.channelName.toUpperCase()} • FULL COURSE 2026 • 100% FREE`, leftX + 18, footY + 28);
+    ctx.restore();
+  }
+
   // ---------------------------------------------------------------------------
   // GLOBAL TOGGLEABLE VIRAL GRAPHIC STICKERS (Available on ANY layout)
   // ---------------------------------------------------------------------------
@@ -2209,6 +3185,43 @@ export function renderThumbnailCanvas(params: RenderCanvasParams) {
     }
     if (viralConfig.showDoodleArrows && layout !== 'doodle-chalk-arrow') {
       drawDoodleWhiteArrowAndLoop(ctx, 220, 180, 360, 240, W - 320, 280);
+    }
+    // High-CTR 3D Visual Accents:
+    if (viralConfig.showStarburstBadge && layout !== 'ai-roadmap-masterclass') {
+      const starburstLabel = viralConfig.starburstBadgeText?.trim() || supportingBadge.trim() || 'COMPLETE ROADMAP';
+      const sbRadius = viralConfig?.starburstSize || 88;
+      const sbAngle = viralConfig?.starburstAngle !== undefined
+        ? viralConfig.starburstAngle
+        : (viralConfig?.textAngle ? viralConfig.textAngle - 5 : -10);
+      const sbColor = viralConfig?.starburstColor || 'gold';
+      const sbSpikes = viralConfig?.starburstSpikes || 18;
+      let sbX = 120;
+      let sbY = 110;
+      if (viralConfig?.starburstPositionPreset === 'top-center') {
+        sbX = W / 2;
+        sbY = 95;
+      } else if (viralConfig?.starburstPositionPreset === 'top-right') {
+        sbX = W - 140;
+        sbY = 95;
+      }
+      if (viralConfig?.starburstPosX !== undefined) sbX += viralConfig.starburstPosX;
+      if (viralConfig?.starburstPosY !== undefined) sbY += viralConfig.starburstPosY;
+      drawExplosiveStarburstBadge(ctx, sbX, sbY, sbRadius, sbRadius * 0.74, sbSpikes, starburstLabel, sbAngle, sbColor);
+    }
+    if (viralConfig.showTechPills && layout !== 'ai-roadmap-masterclass') {
+      const pY = H - 120;
+      draw3DTechLogoPill(ctx, 60, pY, 'python', 'Python');
+      draw3DTechLogoPill(ctx, 180, pY, 'chatgpt', 'ChatGPT');
+      draw3DTechLogoPill(ctx, 300, pY, 'sql', 'SQL');
+      draw3DTechLogoPill(ctx, 420, pY, 'powerbi', 'PowerBI');
+      draw3DTechLogoPill(ctx, 540, pY, 'excel', 'Excel');
+    }
+    if (viralConfig.showDataWave && layout !== 'ai-roadmap-masterclass') {
+      drawDynamicDataWave(ctx, 60, H - 180, W - 200, H - 340, '#00f0ff', '#f59e0b');
+    }
+    if (viralConfig.enhancedLighting && layout !== 'ai-roadmap-masterclass') {
+      const subjX = imageAdjustments.subjectPosition === 'left' ? 40 : imageAdjustments.subjectPosition === 'center' ? (W - 520) / 2 : 700;
+      drawDualToneRimLight(ctx, subjX, 70, 520, 580);
     }
   }
 

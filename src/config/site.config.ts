@@ -4,7 +4,8 @@ export const siteConfig = {
   tagline: 'Free, Fast & Powerful Tools for Everyday Work',
   description: 'An all-in-one suite of 100% browser-based productivity, developer, image, PDF, QR and text processing utilities with zero data collection.',
   url: 'https://toolboxhub.app',
-  ogImage: 'https://toolboxhub.app/assets/og-image.png',
+  logo: '/logo.png',
+  ogImage: 'https://toolboxhub.app/logo.png',
   links: {
     github: 'https://github.com/ashrafulashem/toolbox-hub',
     twitter: 'https://twitter.com/toolboxhub',

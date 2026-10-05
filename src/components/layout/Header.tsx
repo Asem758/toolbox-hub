@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Wrench,
   Search,
   Sun,
   Moon,
@@ -13,6 +12,7 @@ import {
   Sparkles,
   ChevronDown,
 } from 'lucide-react';
+import { Logo } from '../common/Logo';
 import { useTheme } from '../../context/ThemeContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { siteConfig } from '../../config/site.config';
@@ -55,15 +55,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, currentRoute }) =>
         {/* Brand Logo */}
         <a
           href="#/"
-          className="flex items-center gap-2.5 font-extrabold text-lg text-slate-900 dark:text-white tracking-tight shrink-0 group"
+          className="flex items-center tracking-tight shrink-0"
         >
-          <div className="w-9 h-9 rounded-xl bg-linear-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-            <Wrench className="w-5 h-5" />
-          </div>
-          <span className="flex items-center gap-1">
-            <span>ToolBox</span>
-            <span className="text-indigo-600 dark:text-indigo-400">Hub</span>
-          </span>
+          <Logo size="md" />
         </a>
 
         {/* Desktop Navigation */}

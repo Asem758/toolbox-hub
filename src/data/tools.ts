@@ -16,6 +16,7 @@ import WebpToPngConverter from '../tools/image/WebpToPngConverter';
 import ImageColorPicker from '../tools/image/ImageColorPicker';
 import SocialMediaResizer from '../tools/image/SocialMediaResizer';
 import ImageToExcelConverter from '../tools/image/ImageToExcelConverter';
+import ImageToWordConverter from '../tools/image/ImageToWordConverter';
 import JpgToPngConverter from '../tools/image/JpgToPngConverter';
 import FiverrGigImageGenerator from '../tools/image/FiverrGigImageGenerator';
 import YouTubeThumbnailGenerator from '../tools/image/YouTubeThumbnailGenerator';
@@ -692,6 +693,79 @@ export const tools: ToolDefinition[] = [
       { question: 'How do I get the most accurate OCR table extraction?', answer: 'Ensure good lighting, sharp text focus, and high contrast between text and background. Cropping out unnecessary headers or non-table elements also improves recognition.' },
       { question: 'Is my confidential financial or invoice data private?', answer: 'Yes! OCR processing and spreadsheet generation occur entirely in your local browser memory using WebAssembly. No images or extracted text are uploaded to any external server.' },
       { question: 'Can I edit the extracted data before downloading?', answer: 'Yes! You can click into any cell in the preview grid to correct numbers or text, add or delete rows, and customize column names before exporting to Excel.' },
+    ],
+  },
+  {
+    id: 'image-to-word',
+    slug: 'image-to-word',
+    name: 'Image to Word Converter',
+    category: 'image',
+    description: 'Convert JPEG and PNG images into editable Microsoft Word (.docx) documents with dual modes: embedded image layouts or in-browser OCR text extraction.',
+    longDescription: 'Easily convert images (JPEG, PNG, WebP) into professional Microsoft Word (.docx) documents directly in your browser. Choose between Embedding Mode (preserving exact image layouts, custom page sizes, margins, alignments, and captions) or OCR Mode (extracting editable paragraphs, bullet points, and headings with in-browser optical character recognition). 100% private and client-side.',
+    icon: 'FileText',
+    keywords: [
+      'image to word',
+      'jpg to word',
+      'png to word',
+      'convert image to docx',
+      'jpeg to word converter',
+      'photo to word',
+      'picture to word',
+      'ocr image to word',
+      'image to docx',
+      'extract text from image to word',
+    ],
+    featured: true,
+    popular: true,
+    status: 'active',
+    component: ImageToWordConverter,
+    seo: {
+      title: 'Free Image to Word (.docx) Converter - JPG & PNG to Word | ToolBox Hub',
+      description: 'Convert JPEG, PNG, and WebP images to editable Microsoft Word (.docx) documents online for free. Features OCR text extraction, custom page layouts, and 100% private in-browser processing.',
+    },
+    howToUse: [
+      { step: 1, title: 'Upload JPEG or PNG images', text: 'Drag and drop single or multiple image files (JPG, PNG, WebP) or click Try Sample Document.' },
+      { step: 2, title: 'Choose conversion mode', text: 'Select "Embed Images in Word" to preserve exact layouts or "OCR & Extract Editable Text" to convert photo text into editable paragraphs.' },
+      { step: 3, title: 'Customize layout & settings', text: 'Adjust document title, page orientation (portrait/landscape), margins, scale, captions, and OCR language.' },
+      { step: 4, title: 'Download Word (.docx)', text: 'Click Download Word (.docx) to instantly generate and download your formatted document.' },
+    ],
+    features: [
+      'Dual conversion modes: visual image embedding or smart OCR text extraction',
+      'Batch conversion: upload and compile multiple images into a unified Word document',
+      'High-accuracy in-browser OCR engine supporting English, Spanish, French, and German',
+      'Interactive transcript editor: review and edit recognized text before Word generation',
+      'Customizable page layouts: portrait or landscape, normal/narrow/wide margins, and image scaling',
+      'Custom image captions, titles, and figure numbering',
+      'Export to standard Microsoft Word (.docx) fully compatible with Word, Google Docs, and LibreOffice',
+      '100% client-side privacy with zero file uploads or server storage',
+    ],
+    useCases: [
+      'Digitizing scanned documents, receipts, contracts, and memos into editable Microsoft Word files',
+      'Assembling photo portfolios, architectural blueprints, and visual evidence into formatted reports',
+      'Extracting text from screenshots, infographics, and book pages for research papers or essays',
+      'Creating shareable .docx files from smartphone photos of whiteboards and meeting notes',
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between Embed Mode and OCR Mode?',
+        answer: 'Embed Mode places your photos directly into the Word document as high-resolution images, preserving exact visual appearance, stamps, and layout. OCR Mode reads the text inside your images and turns it into editable Word paragraphs and headings.',
+      },
+      {
+        question: 'Are my images or documents uploaded to any remote server?',
+        answer: 'No! All processing, image scaling, OCR recognition, and .docx generation take place entirely within your browser using WebAssembly and client-side APIs. Your files never leave your computer.',
+      },
+      {
+        question: 'Which image file formats are supported?',
+        answer: 'You can convert JPEG (.jpg, .jpeg), PNG (.png), and modern WebP (.webp) image files.',
+      },
+      {
+        question: 'Can I open and edit the exported document in Microsoft Word and Google Docs?',
+        answer: 'Yes! The generated file uses standard Office Open XML (.docx) format and opens natively in Microsoft Word, Google Docs, Apple Pages, and LibreOffice Writer.',
+      },
+      {
+        question: 'Can I edit the OCR extracted text before downloading the Word document?',
+        answer: 'Yes! When using OCR Mode, an interactive editor allows you to review, correct typos, adjust punctuation, and edit text for every uploaded image before generating the final Word file.',
+      },
     ],
   },
   {

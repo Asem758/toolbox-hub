@@ -12,8 +12,8 @@ export const categories: ToolCategory[] = [
   {
     id: 'image',
     name: 'Images & Media',
-    shortDescription: 'YouTube thumbnails, compression, resizing, and media converters',
-    description: 'Create high-CTR YouTube thumbnails, Fiverr gig visuals, lossless photo compression, dimension resizing, JPG/PNG/WebP conversions, and PDF tools without uploading files to remote servers.',
+    shortDescription: 'Image to Word, thumbnails, compression, resizing, and media converters',
+    description: 'Convert images to Word (.docx) and Excel (.xlsx), create high-CTR YouTube thumbnails, Fiverr gig visuals, lossless photo compression, dimension resizing, and JPG/PNG/WebP conversions without uploading files to remote servers.',
     icon: 'Image',
     gradient: 'from-violet-500 to-purple-600',
   },
